@@ -1,0 +1,111 @@
+# check-runner-ip.yml - Get GitHub Actions runner IP address
+#
+# This workflow demonstrates how to get the IP address of the GitHub Actions
+# runner using myip.foo. Useful for:
+# - Whitelisting IPs in firewalls
+# - Debugging network issues
+# - Verifying VPN connections in CI/CD
+#
+# Usage: Copy this file to .github/workflows/check-runner-ip.yml
+
+name: Check Runner IP
+
+on:
+  # Run on push to main
+  push:
+    branches: [main]
+
+  # Run on pull requests
+  pull_request:
+    branches: [main]
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  check-ip:
+    name: Get Runner IP Address
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get plain IP address
+        run: |
+          echo "📡 Getting runner IP address..."
+          IP=$(curl -s https://myip.foo/plain)
+          echo "Runner IP: $IP"
+          echo "RUNNER_IP=$IP" >> $GITHUB_ENV
+
+      - name: Get full connection info
+        run: |
+          echo "📊 Full connection info:"
+          curl -s https://myip.foo/api | jq '.'
+
+      - name: Check connection type
+        run: |
+          echo "🔍 Connection type:"
+          TYPE=$(curl -s https://myip.foo/api | jq -r '.connectionType // "unknown"')
+          echo "Type: $TYPE"
+
+          if [ "$TYPE" = "datacenter" ]; then
+            echo "✅ Running in datacenter (expected for GitHub Actions)"
+          elif [ "$TYPE" = "residential" ]; then
+            echo "⚠️ Running on residential IP (self-hosted runner?)"
+          fi
+
+      - name: Check dual-stack connectivity
+        run: |
+          echo "🌐 Checking dual-stack..."
+
+          # Check IPv4
+          IPV4=$(curl -s --connect-timeout 5 https://ipv4.myip.foo/ip 2>/dev/null || echo "")
+          if [ -n "$IPV4" ]; then
+            echo "IPv4: ✅ $IPV4"
+          else
+            echo "IPv4: ❌ Not available"
+          fi
+
+          # Check IPv6
+          IPV6=$(curl -s --connect-timeout 5 https://ipv6.myip.foo/ip 2>/dev/null || echo "")
+          if [ -n "$IPV6" ]; then
+            echo "IPv6: ✅ $IPV6"
+          else
+            echo "IPv6: ❌ Not available"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 🦊 Runner IP Information" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **IP Address:** \`$RUNNER_IP\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **API:** [myip.foo](https://myip.foo)" >> $GITHUB_STEP_SUMMARY
+
+  # Example: Whitelist IP before deployment
+  deploy-with-whitelist:
+    name: Deploy with IP Whitelist
+    runs-on: ubuntu-latest
+    # Only run on main branch
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Get runner IP
+        id: ip
+        run: |
+          IP=$(curl -s https://myip.foo/plain)
+          echo "ip=$IP" >> $GITHUB_OUTPUT
+
+      - name: Whitelist IP (example)
+        run: |
+          echo "🔐 Would whitelist IP: ${{ steps.ip.outputs.ip }}"
+          # Example: aws ec2 authorize-security-group-ingress ...
+          # Example: gcloud compute firewall-rules create ...
+
+      - name: Deploy (example)
+        run: |
+          echo "🚀 Deploying from IP: ${{ steps.ip.outputs.ip }}"
+          # Your deployment commands here
+
+      - name: Remove whitelist (example)
+        if: always()  # Run even if deploy fails
+        run: |
+          echo "🧹 Would remove IP whitelist: ${{ steps.ip.outputs.ip }}"
+          # Clean up firewall rules

@@ -28,7 +28,7 @@ curl https://myip.foo/api
 
 [MyIP.foo](https://myip.foo) is a fast, privacy-focused IP address lookup service built on Cloudflare Workers. It provides:
 
-- ✅ **Dual-stack support** - Detects both IPv4 and IPv6
+- ✅ **Dual-stack support** - Dedicated IPv4 and IPv6 endpoints
 - ✅ **Geolocation data** - City, country, ISP, timezone, coordinates
 - ✅ **No logging** - Your IP is never stored
 - ✅ **Free API** - JSON and plain text endpoints
@@ -150,6 +150,53 @@ Detects if your connection is from a VPN, datacenter, or residential network.
 - VPN detection
 - Fraud prevention
 - Traffic analysis
+
+---
+
+### Dual-Stack Endpoints
+
+Check IPv4 and IPv6 connectivity separately using dedicated subdomains:
+
+| Endpoint | Returns | DNS Record |
+|----------|---------|------------|
+| `https://ipv4.myip.foo/ip` | IPv4 address only | A record |
+| `https://ipv6.myip.foo/ip` | IPv6 address only | AAAA record |
+
+```bash
+# Check IPv4
+curl -s https://ipv4.myip.foo/ip
+# Output: 203.0.113.42
+
+# Check IPv6
+curl -s https://ipv6.myip.foo/ip
+# Output: 2001:db8::1
+```
+
+**Perfect for:**
+- Dual-stack connectivity testing
+- Network diagnostics
+- CI/CD environment checks
+
+---
+
+## 📁 Example Files
+
+This repository includes ready-to-use example scripts in the `/examples` directory:
+
+### Bash
+- **[dual-stack-check.sh](examples/bash/dual-stack-check.sh)** - Check IPv4 and IPv6 connectivity
+
+### Python
+- **[dual-stack-check.py](examples/python/dual-stack-check.py)** - Parallel dual-stack check with connection type detection
+
+### React / TypeScript
+- **[useMyIP.ts](examples/react/useMyIP.ts)** - React hooks: `useMyIP()`, `useMyIPDualStack()`, `useMyIPPlain()`
+
+### GitHub Actions
+- **[check-runner-ip.yml](examples/github-actions/check-runner-ip.yml)** - Get runner IP, check dual-stack, deploy with IP whitelisting
+
+### Monitoring
+- **[ip-change-alert.py](examples/monitoring/ip-change-alert.py)** - Monitor IP changes with Slack/Discord webhooks
 
 ---
 
